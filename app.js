@@ -1,31 +1,11 @@
-// Import Express
-const express = require("express");
+app.get("/students", (req, res) => {
+//initializing students array  of students objects. 
+    const students = [
+        { regno: MX101, name: "Arun", CGPA: 8.5 },
+        { regno: MX102, name: "Meena", CGPA: 9.2 },
+        { regno: MX103, name: "Ravi", CGPA: 7.8 }
+    ];
 
-// Create Express application
-const app = express();
-
-// Set EJS as the template engine
-app.set("view engine", "ejs");
-
-// Define the home route
-app.get("/", (req, res) => {
-
-    // Pass data to the EJS template
-    res.render("home", {
-        name: "26MX",
-        department: "Computer Applications"
-    });
+res.render("students", { students }); //Passing students object array to students.ejs template 
 
 });
-// Start the server
-app.listen(3000, () => {
-    console.log("Server running at http://localhost:3000");
-});
-
-app.get("/result", (req, res) => { 
-    res.render("result", {
-        name: "Arun",
-        mark: 75
-    });
-});
-
